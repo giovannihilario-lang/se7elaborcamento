@@ -1,49 +1,13 @@
 import { useState } from "react";
 
-// ─── PLACEHOLDER ASSETS ───────────────────────────────────────────────────────
-const StickerPlaceholder = ({ index, size = 64 }: { index: number; size?: number }) => {
-  const colors = ["#39FF14", "#00e5a0", "#b8ff57", "#7dff6b"];
-  const expressions = ["😄", "😎", "🤩", "😜"];
-  return (
-    <div
-      style={{
-        width: size,
-        height: size,
-        borderRadius: "50%",
-        background: `radial-gradient(circle at 35% 35%, ${colors[index % 4]}, #1a1a1a)`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: size * 0.45,
-        boxShadow: `0 0 ${size * 0.3}px ${colors[index % 4]}55`,
-        flexShrink: 0,
-      }}
-    >
-      {expressions[index % 4]}
-    </div>
-  );
-};
+// ─── PLACEHOLDER ASSETS ─────────────────────────────────────────
 
 const Logo = ({ size = 48 }: { size?: number }) => (
-  <div
-    style={{
-      width: size * 1.8,
-      height: size,
-      border: "2px solid #39FF14",
-      borderRadius: 6,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontFamily: "'Space Mono', monospace",
-      fontSize: size * 0.32,
-      color: "#39FF14",
-      letterSpacing: 1,
-      flexShrink: 0,
-    }}
-  >
-    Se<span style={{ color: "#fff" }}>7</span>e
-    <span style={{ color: "#39FF14", marginLeft: 2 }}>Lab</span>
-  </div>
+  <img
+    src="src/Icons/Se7elab.png"
+    alt="Se7eLab"
+    style={{ height: size, width: "auto", flexShrink: 0 }}
+  />
 );
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -324,17 +288,8 @@ export default function App() {
 
         {/* Stickers row */}
         <div
-          className="hero-stickers"
-          style={{ display: "flex", gap: 20, marginTop: 36, marginBottom: 8, alignItems: "flex-end" }}
-        >
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="sticker-float" style={{ transform: i % 2 === 0 ? "scale(1.15)" : "scale(0.95)" }}>
-              <StickerPlaceholder index={i} size={i === 2 ? 72 : 58} />
-            </div>
-          ))}
-          <p style={{ color: "#444", fontSize: 11, fontFamily: "'Space Mono', monospace", marginLeft: 8, lineHeight: 1.5 }}>
-            ← substituir pelos<br />stickers reais
-          </p>
+           style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 36 }}>
+          <img src="src/Icons/se7esorrindo.png" alt="sticker" style={{ width: 72, height: 72, objectFit: "contain" }} />
         </div>
       </div>
 
@@ -342,7 +297,10 @@ export default function App() {
 
       {/* ── SERVIÇOS ── */}
       <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 24px" }}>
-        <div className="section-label">Serviços disponíveis</div>
+      <div className="section-label">Serviços disponíveis</div>
+<div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+  <img src="src/Icons/se7elinguinha.png" alt="sticker" style={{ width: 52, height: 52, objectFit: "contain" }} />
+</div>
 
         <div
           className="services-grid"
@@ -393,7 +351,10 @@ export default function App() {
 
         {/* ── RESUMO ── */}
         <div style={{ marginTop: 40 }}>
-          <div className="section-label">Resumo do orçamento selecionado</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+  <img src="src/Icons/se7eolhosorriso.png" alt="sticker" style={{ width: 48, height: 48, objectFit: "contain" }} />
+  <div className="section-label" style={{ margin: 0, flex: 1 }}>Resumo do orçamento selecionado</div>
+</div>
 
           <div
             className="summary-grid"
@@ -439,9 +400,12 @@ export default function App() {
               })}
               <div style={{ height: 1, background: "#2a2a2a", margin: "8px 0" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>TOTAL / MÊS</span>
-                <span className="price-tag glow-green" style={{ fontSize: 22, color: "#39FF14" }}>{fmt(total)}</span>
-              </div>
+  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <img src="src/Icons/se7esurpreso.png" alt="sticker" style={{ width: 40, height: 40, objectFit: "contain" }} />
+    <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>TOTAL / MÊS</span>
+  </div>
+  <span className="price-tag glow-green" style={{ fontSize: 22, color: "#39FF14" }}>{fmt(total)}</span>
+</div>
             </div>
           </div>
         </div>
