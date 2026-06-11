@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { PrintsSection } from "./PrintsSection";
 
-// ─── PLACEHOLDER ASSETS ─────────────────────────────────────────
-
+// ─── ASSETS ──────────────────────────────────────────────────────
 const Logo = ({ size = 48 }: { size?: number }) => (
   <img
     src="src/Icons/Se7elab.png"
@@ -9,8 +9,8 @@ const Logo = ({ size = 48 }: { size?: number }) => (
     style={{ height: size, width: "auto", flexShrink: 0 }}
   />
 );
-// ─────────────────────────────────────────────────────────────────────────────
 
+// ─── SERVIÇOS ────────────────────────────────────────────────────
 const services = [
   {
     id: 1,
@@ -75,159 +75,8 @@ const services = [
     badge: "novo",
   },
 ];
-// Adicione este componente antes do CasesSection
 
-const prints = {
-  feed: [
-    { src: "src/prints/feed-1.png", label: "Reel" },
-    { src: "src/prints/feed-2.png", label: "Reel" },
-    { src: "src/prints/feed-3.png", label: "Post" },
-    { src: "src/prints/feed-4.png", label: "Post" },
-    { src: "src/prints/feed-5.png", label: "Reel" },
-    { src: "src/prints/feed-6.png", label: "Post" },
-  ],
-  metricas: [
-    { src: "src/prints/metric-1.png", label: "Alcance" },
-    { src: "src/prints/metric-2.png", label: "Seguidores" },
-    { src: "src/prints/metric-3.png", label: "Insights" },
-  ],
-  design: [
-    { src: "src/prints/design-1.png", label: "Carrossel" },
-    { src: "src/prints/design-2.png", label: "Banner" },
-    { src: "src/prints/design-3.png", label: "Arte" },
-    { src: "src/prints/design-4.png", label: "Arte" },
-  ],
-};
-
-const PrintsSection = () => {
-  const [active, setActive] = useState<"feed" | "metricas" | "design">("feed");
-  const [lightbox, setLightbox] = useState<string | null>(null);
-
-  const tabs: { key: typeof active; label: string; color: string }[] = [
-    { key: "feed", label: "Feed & Reels", color: "#39FF14" },
-    { key: "metricas", label: "Métricas", color: "#00e5a0" },
-    { key: "design", label: "Peças de Design", color: "#00cfff" },
-  ];
-
-  const current = prints[active];
-  const accentColor = tabs.find((t) => t.key === active)!.color;
-
-  return (
-    <div style={{ marginTop: 32 }}>
-      {/* Tab bar */}
-      <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setActive(t.key)}
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 10,
-              letterSpacing: 2,
-              textTransform: "uppercase",
-              padding: "6px 16px",
-              borderRadius: 6,
-              border: `1px solid ${active === t.key ? t.color + "66" : "#2a2a2a"}`,
-              background: active === t.key ? t.color + "15" : "transparent",
-              color: active === t.key ? t.color : "#555",
-              cursor: "pointer",
-              transition: "all 0.2s",
-            }}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 8,
-        }}
-      >
-        {current.map((p, i) => (
-          <div
-            key={i}
-            onClick={() => setLightbox(p.src)}
-            style={{
-              position: "relative",
-              aspectRatio: "1 / 1",
-              borderRadius: 10,
-              overflow: "hidden",
-              border: "1px solid #2a2a2a",
-              cursor: "zoom-in",
-              background: "#141414",
-              transition: "transform 0.2s, border-color 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "scale(1.02)";
-              (e.currentTarget as HTMLDivElement).style.borderColor = accentColor + "55";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
-              (e.currentTarget as HTMLDivElement).style.borderColor = "#2a2a2a";
-            }}
-          >
-            <img
-              src={p.src}
-              alt={p.label}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: "20px 10px 8px",
-                background: "linear-gradient(transparent, #000000cc)",
-                fontFamily: "'Space Mono', monospace",
-                fontSize: 9,
-                color: accentColor,
-                letterSpacing: 1.5,
-                textTransform: "uppercase",
-              }}
-            >
-              {p.label}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Lightbox */}
-      {lightbox && (
-        <div
-          onClick={() => setLightbox(null)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "#000000ee",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1000,
-            cursor: "zoom-out",
-            padding: 24,
-          }}
-        >
-          <img
-            src={lightbox}
-            alt=""
-            style={{
-              maxWidth: "90vw",
-              maxHeight: "90vh",
-              objectFit: "contain",
-              borderRadius: 12,
-              border: `1px solid ${accentColor}44`,
-            }}
-          />
-        </div>
-      )}
-    </div>
-  );
-};
+// ─── CASES ───────────────────────────────────────────────────────
 const CasesSection = () => (
   <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 24px" }}>
     <div className="section-label">Resultados reais</div>
@@ -264,15 +113,15 @@ const CasesSection = () => (
       </div>
 
       <div className="stat-grid">
-<div style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 8 }}>
-  <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#39FF14" }} />
-  <p style={{ fontSize: 11, color: "#555" }}>
-    Gestão ativa de social media · 80% do conteúdo produzido por Giovanni Domingues Hilario
-  </p>
-</div>
+        <div style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#39FF14" }} />
+          <p style={{ fontSize: 11, color: "#555" }}>
+            Gestão ativa de social media · 80% do conteúdo produzido por Giovanni Domingues Hilario
+          </p>
+        </div>
 
-{/* ← NOVO */}
-<PrintsSection />
+        <PrintsSection />
+
         <div className="stat-item">
           <p style={{ fontSize: 9, color: "#555", fontFamily: "'Space Mono', monospace", letterSpacing: 1.5, marginBottom: 6 }}>VISUALIZAÇÕES · 30 DIAS</p>
           <p style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 30, color: "#fff", lineHeight: 1 }}>369,1 mil</p>
@@ -301,9 +150,11 @@ const CasesSection = () => (
   </div>
 );
 
+// ─── UTILS ───────────────────────────────────────────────────────
 const fmt = (v: number) =>
   v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
+// ─── APP ─────────────────────────────────────────────────────────
 export default function App() {
   const [selected, setSelected] = useState<number[]>([1, 2, 3, 4]);
 
@@ -319,15 +170,7 @@ export default function App() {
   };
 
   return (
-    <div
-      style={{
-        background: "#0d0d0d",
-        minHeight: "100vh",
-        fontFamily: "'Inter', sans-serif",
-        color: "#e8e8e8",
-        overflowX: "hidden",
-      }}
-    >
+    <div style={{ background: "#0d0d0d", minHeight: "100vh", fontFamily: "'Inter', sans-serif", color: "#e8e8e8", overflowX: "hidden" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap');
 
@@ -345,19 +188,7 @@ export default function App() {
           position: relative;
           overflow: hidden;
         }
-        .card-service::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 12px;
-          opacity: 0;
-          transition: opacity 0.25s;
-        }
-        .card-service.active {
-          border-color: #39FF1466;
-          background: #111f13;
-        }
-        .card-service.active::before { opacity: 1; }
+        .card-service.active { border-color: #39FF1466; background: #111f13; }
         .card-service:hover { border-color: #39FF1444; transform: translateY(-2px); }
 
         .price-tag {
@@ -425,15 +256,9 @@ export default function App() {
           flex-shrink: 0;
           transition: all 0.2s;
         }
-        .check-circle.on {
-          background: #39FF14;
-          border-color: #39FF14;
-          color: #000;
-        }
+        .check-circle.on { background: #39FF14; border-color: #39FF14; color: #000; }
 
-        .sticker-float {
-          animation: float 4s ease-in-out infinite;
-        }
+        .sticker-float { animation: float 4s ease-in-out infinite; }
         .sticker-float:nth-child(2) { animation-delay: -1s; }
         .sticker-float:nth-child(3) { animation-delay: -2s; }
         .sticker-float:nth-child(4) { animation-delay: -3s; }
@@ -480,55 +305,56 @@ export default function App() {
           text-align: center;
         }
 
+        .case-card {
+          background: #141414;
+          border: 1px solid #2a2a2a;
+          border-radius: 12px;
+          padding: 28px 24px;
+          position: relative;
+          overflow: hidden;
+        }
+        .case-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #39FF14, #00e5a0, transparent);
+        }
+
+        .stat-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+          margin-top: 20px;
+        }
+        .stat-item {
+          background: #0d0d0d;
+          border: 1px solid #222;
+          border-radius: 8px;
+          padding: 14px 16px;
+        }
+
+        .growth-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: #39FF1415;
+          border: 1px solid #39FF1433;
+          border-radius: 999px;
+          padding: 4px 12px;
+          font-family: 'Space Mono', monospace;
+          font-size: 10px;
+          color: #39FF14;
+          letter-spacing: 1px;
+          margin-bottom: 16px;
+        }
+
         .divider { height: 1px; background: linear-gradient(90deg, transparent, #2a2a2a, transparent); margin: 48px 0; }
 
         @media (max-width: 640px) {
-          .case-card {
-            background: #141414;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            padding: 28px 24px;
-            position: relative;
-            overflow: hidden;
-          }
-          .case-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #39FF14, #00e5a0, transparent);
-          }
-          .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 20px;
-          }
-          .stat-item {
-            background: #0d0d0d;
-            border: 1px solid #222;
-            border-radius: 8px;
-            padding: 14px 16px;
-          }
-          .growth-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #39FF1415;
-            border: 1px solid #39FF1433;
-            border-radius: 999px;
-            padding: 4px 12px;
-            font-family: 'Space Mono', monospace;
-            font-size: 10px;
-            color: #39FF14;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-          }
-          
-          @media (max-width: 640px) {
-            .services-grid { grid-template-columns: 1fr !important; }
+          .services-grid { grid-template-columns: 1fr !important; }
           .summary-grid { grid-template-columns: 1fr !important; }
-          .hero-stickers { gap: 12px !important; }
+          .stat-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
 
@@ -554,9 +380,7 @@ export default function App() {
           Giovanni Domingues Hilario · Designer Gráfico, Social Media & Tráfego Pago
         </p>
 
-        {/* Stickers row */}
-        <div
-           style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 36 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 36 }}>
           <img src="src/Icons/se7esorrindo.png" alt="sticker" style={{ width: 72, height: 72, objectFit: "contain" }} />
         </div>
       </div>
@@ -567,10 +391,10 @@ export default function App() {
 
       {/* ── SERVIÇOS ── */}
       <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 24px" }}>
-      <div className="section-label">Serviços disponíveis</div>
-<div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-  <img src="src/Icons/se7elinguinha.png" alt="sticker" style={{ width: 52, height: 52, objectFit: "contain" }} />
-</div>
+        <div className="section-label">Serviços disponíveis</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+          <img src="src/Icons/se7elinguinha.png" alt="sticker" style={{ width: 52, height: 52, objectFit: "contain" }} />
+        </div>
 
         <div
           className="services-grid"
@@ -586,24 +410,15 @@ export default function App() {
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
                   <div>
-                    <span
-                      className="tag-pill"
-                      style={{ background: `${s.color}18`, color: s.color, border: `1px solid ${s.color}33` }}
-                    >
+                    <span className="tag-pill" style={{ background: `${s.color}18`, color: s.color, border: `1px solid ${s.color}33` }}>
                       {s.tag}
                     </span>
                     {s.badge && <span className="badge">{s.badge}</span>}
                   </div>
                   <div className={`check-circle ${isActive ? "on" : ""}`}>✓</div>
                 </div>
-
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8 }}>
-                  {s.name}
-                </h3>
-                <p style={{ fontSize: 12.5, color: "#777", lineHeight: 1.65, marginBottom: 16 }}>
-                  {s.desc}
-                </p>
-
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{s.name}</h3>
+                <p style={{ fontSize: 12.5, color: "#777", lineHeight: 1.65, marginBottom: 16 }}>{s.desc}</p>
                 <div style={{ borderTop: "1px solid #222", paddingTop: 14, display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
                   <div>
                     <p className="ref-price">{s.ref}</p>
@@ -621,15 +436,12 @@ export default function App() {
 
         {/* ── RESUMO ── */}
         <div style={{ marginTop: 40 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-  <img src="src/Icons/se7eolhosorriso.png" alt="sticker" style={{ width: 48, height: 48, objectFit: "contain" }} />
-  <div className="section-label" style={{ margin: 0, flex: 1 }}>Resumo do orçamento selecionado</div>
-</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+            <img src="src/Icons/se7eolhosorriso.png" alt="sticker" style={{ width: 48, height: 48, objectFit: "contain" }} />
+            <div className="section-label" style={{ margin: 0, flex: 1 }}>Resumo do orçamento selecionado</div>
+          </div>
 
-          <div
-            className="summary-grid"
-            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 24 }}
-          >
+          <div className="summary-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 24 }}>
             <div className="summary-card">
               <p style={{ fontSize: 10, color: "#555", fontFamily: "'Space Mono', monospace", letterSpacing: 2, marginBottom: 8 }}>SERVIÇOS SELECIONADOS</p>
               <p className="price-tag" style={{ fontSize: 28, color: "#fff" }}>{selected.length}</p>
@@ -642,40 +454,28 @@ export default function App() {
             </div>
           </div>
 
-          {/* Line items */}
           <div className="total-box">
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {services.map((s) => {
                 const isOn = selected.includes(s.id);
                 return (
-                  <div
-                    key={s.id}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      opacity: isOn ? 1 : 0.3,
-                      transition: "opacity 0.2s",
-                    }}
-                  >
+                  <div key={s.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", opacity: isOn ? 1 : 0.3, transition: "opacity 0.2s" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <div style={{ width: 8, height: 8, borderRadius: "50%", background: isOn ? s.color : "#333", flexShrink: 0 }} />
                       <span style={{ fontSize: 13, color: "#ccc" }}>{s.name}</span>
                     </div>
-                    <span className="price-tag" style={{ fontSize: 14, color: isOn ? s.color : "#444" }}>
-                      {fmt(s.price)}
-                    </span>
+                    <span className="price-tag" style={{ fontSize: 14, color: isOn ? s.color : "#444" }}>{fmt(s.price)}</span>
                   </div>
                 );
               })}
               <div style={{ height: 1, background: "#2a2a2a", margin: "8px 0" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-    <img src="src/Icons/se7esurpreso.png" alt="sticker" style={{ width: 40, height: 40, objectFit: "contain" }} />
-    <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>TOTAL / MÊS</span>
-  </div>
-  <span className="price-tag glow-green" style={{ fontSize: 22, color: "#39FF14" }}>{fmt(total)}</span>
-</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <img src="src/Icons/se7esurpreso.png" alt="sticker" style={{ width: 40, height: 40, objectFit: "contain" }} />
+                  <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>TOTAL / MÊS</span>
+                </div>
+                <span className="price-tag glow-green" style={{ fontSize: 22, color: "#39FF14" }}>{fmt(total)}</span>
+              </div>
             </div>
           </div>
         </div>
