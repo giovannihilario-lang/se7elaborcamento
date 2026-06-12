@@ -213,15 +213,20 @@ export const PrintsSection = () => {
             zIndex: 1000, cursor: "zoom-out", padding: 24,
           }}
         >
-          <img
-            src={lightbox}
-            alt=""
-            style={{
-              maxWidth: "90vw", maxHeight: "90vh",
-              objectFit: "contain", borderRadius: 12,
-              border: `1px solid ${accentColor}44`,
-            }}
-          />
+          {lightbox?.endsWith(".mp4") || lightbox?.endsWith(".MP4") ? (
+  <video
+    src={lightbox}
+    style={{ maxWidth: "90vw", maxHeight: "90vh", borderRadius: 12, border: `1px solid ${accentColor}44` }}
+    controls
+    autoPlay
+  />
+) : (
+  <img
+    src={lightbox}
+    alt=""
+    style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain", borderRadius: 12, border: `1px solid ${accentColor}44` }}
+  />
+)}
         </div>
       )}
     </div>
