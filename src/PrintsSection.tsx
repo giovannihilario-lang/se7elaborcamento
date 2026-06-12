@@ -148,7 +148,7 @@ export const PrintsSection = () => {
           onClick={() => setLightbox(p.src)}
           style={{
             position: "relative",
-            aspectRatio: "9 / 16",
+            aspectRatio: "5 / 4",
             borderRadius: 10,
             overflow: "hidden",
             border: "1px solid #2a2a2a",
