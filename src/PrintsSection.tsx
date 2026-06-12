@@ -2,12 +2,10 @@ import { useState, useRef } from "react";
 
 const prints = {
   feed: [
-    { src: "src/prints/reel-1.png", label: "Reel" },
-    { src: "src/prints/reel-2.png", label: "Reel" },
-    { src: "src/prints/reel-3.png", label: "Reel" },
-    { src: "src/prints/reel-4.png", label: "Reel" },
-    { src: "src/prints/reel-5.png", label: "Reel" },
-    { src: "src/prints/reel-6.png", label: "Reel" },
+    { src: "src/prints/reel-1.mov", label: "Reel" },
+    { src: "src/prints/reel-2.mov", label: "Reel" },
+    { src: "src/prints/reel-3.mov", label: "Reel" },
+    { src: "src/prints/reel-4.mov", label: "Reel" }
   ],
   metricas: [
     { src: "src/prints/metric-1.png", label: "Alcance" },
