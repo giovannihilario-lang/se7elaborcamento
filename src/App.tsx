@@ -4,7 +4,7 @@ import { PrintsSection } from "./PrintsSection";
 // ─── ASSETS ──────────────────────────────────────────────────────
 const Logo = ({ size = 48 }: { size?: number }) => (
   <img
-    src="src/Icons/Se7elab.png"
+    src="/Icons/Se7elab.png"
     alt="Se7eLab"
     style={{ height: size, width: "auto", flexShrink: 0 }}
   />
@@ -381,7 +381,7 @@ export default function App() {
         </p>
 
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 36 }}>
-          <img src="src/Icons/se7esorrindo.png" alt="sticker" style={{ width: 72, height: 72, objectFit: "contain" }} />
+          <img src ="/Icons/se7esorrindo.png" alt="sticker" style={{ width: 72, height: 72, objectFit: "contain" }} />
         </div>
       </div>
 
@@ -393,7 +393,7 @@ export default function App() {
       <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 24px" }}>
         <div className="section-label">Serviços disponíveis</div>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-          <img src="src/Icons/se7elinguinha.png" alt="sticker" style={{ width: 52, height: 52, objectFit: "contain" }} />
+          <img src="/Icons/se7elinguinha.png" alt="sticker" style={{ width: 52, height: 52, objectFit: "contain" }} />
         </div>
 
         <div
@@ -437,7 +437,7 @@ export default function App() {
         {/* ── RESUMO ── */}
         <div style={{ marginTop: 40 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-            <img src="src/Icons/se7eolhosorriso.png" alt="sticker" style={{ width: 48, height: 48, objectFit: "contain" }} />
+            <img src="/Icons/se7eolhosorriso.png" alt="sticker" style={{ width: 48, height: 48, objectFit: "contain" }} />
             <div className="section-label" style={{ margin: 0, flex: 1 }}>Resumo do orçamento selecionado</div>
           </div>
 
@@ -471,7 +471,7 @@ export default function App() {
               <div style={{ height: 1, background: "#2a2a2a", margin: "8px 0" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <img src="src/Icons/se7esurpreso.png" alt="sticker" style={{ width: 40, height: 40, objectFit: "contain" }} />
+                  <img src="/Icons/se7esurpreso.png" alt="sticker" style={{ width: 40, height: 40, objectFit: "contain" }} />
                   <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>TOTAL / MÊS</span>
                 </div>
                 <span className="price-tag glow-green" style={{ fontSize: 22, color: "#39FF14" }}>{fmt(total)}</span>
