@@ -2,10 +2,10 @@ import { useState, useRef } from "react";
 
 const prints = {
   feed: [
-    { src: "/prints/reel-1.mp4", label: "Reel" },
-{ src: "/prints/reel-2.mp4", label: "Reel" },
-{ src: "/prints/reel-3.mp4", label: "Reel" },
-{ src: "/prints/reel-4.mp4", label: "Reel" },
+    { src: "/prints/reel-1.MP4", label: "Reel" },
+    { src: "/prints/reel-2.MP4", label: "Reel" },
+    { src: "/prints/reel-3.MP4", label: "Reel" },
+    { src: "/prints/reel-4.MP4", label: "Reel" },
   ],
   metricas: [
     { src: "/prints/metric-1.png", label: "Alcance" },
@@ -68,11 +68,14 @@ export const PrintsSection = () => {
             (e.currentTarget as HTMLDivElement).style.borderColor = "#2a2a2a";
           }}
         >
-          <img
-            src={p.src}
-            alt={p.label}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-          />
+          <video
+  src={p.src}
+  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+  muted
+  loop
+  playsInline
+  autoPlay
+/>
           {/* Play icon overlay */}
           <div style={{
             position: "absolute", top: 10, right: 10,
