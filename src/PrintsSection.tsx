@@ -107,91 +107,37 @@ export const PrintsSection = () => {
   );
 
   // ── POSTS: carrossel horizontal 5:4 ──────────────────────────────────────
-  const PostsCarousel = () => (
-    <div style={{ position: "relative" }}>
-      {/* Setas */}
-      {["left", "right"].map((dir) => (
-        <button
-          key={dir}
-          onClick={() => scroll(dir as "left" | "right")}
-          style={{
-            position: "absolute",
-            top: "50%", transform: "translateY(-50%)",
-            [dir]: -16,
-            zIndex: 10,
-            width: 36, height: 36, borderRadius: "50%",
-            background: "#1a1a1a",
-            border: `1px solid ${accentColor}44`,
-            color: accentColor,
-            fontSize: 16, cursor: "pointer",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            transition: "background 0.2s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = accentColor + "22")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "#1a1a1a")}
-        >
-          {dir === "left" ? "‹" : "›"}
-        </button>
-      ))}
+  const PostsCarousel = () => {
+  const [index, setIndex] = useState(0);
+  const prev = () => setIndex((i) => (i - 1 + current.length) % current.length);
+  const next = () => setIndex((i) => (i + 1) % current.length);
 
-      {/* Track */}
-      <div
-        ref={carouselRef}
-        style={{
-          display: "flex",
-          gap: 12,
-          overflowX: "auto",
-          scrollSnapType: "x mandatory",
-          paddingBottom: 8,
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        <style>{`.carousel::-webkit-scrollbar { display: none; }`}</style>
-        {current.map((p, i) => (
-          <div
-            key={i}
-            onClick={() => setLightbox(p.src)}
-            style={{
-              flexShrink: 0,
-              width: "calc(33.33% - 8px)",
-              aspectRatio: "5 / 4",
-              borderRadius: 12,
-              overflow: "hidden",
-              border: "1px solid #2a2a2a",
-              cursor: "zoom-in",
-              background: "#141414",
-              scrollSnapAlign: "start",
-              position: "relative",
-              transition: "border-color 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLDivElement).style.borderColor = accentColor + "66";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLDivElement).style.borderColor = "#2a2a2a";
-            }}
-          >
-            <img
-              src={p.src}
-              alt={p.label}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-            <div style={{
-              position: "absolute", bottom: 0, left: 0, right: 0,
-              padding: "20px 12px 10px",
-              background: "linear-gradient(transparent, #000000cc)",
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 9, color: accentColor,
-              letterSpacing: 1.5, textTransform: "uppercase",
-            }}>
-              {p.label}
-            </div>
-          </div>
-        ))}
+  return (
+    <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 12 }}>
+      <button onClick={prev} style={{
+        width: 36, height: 36, borderRadius: "50%", background: "#1a1a1a",
+        border: `1px solid ${accentColor}44`, color: accentColor,
+        fontSize: 16, cursor: "pointer", flexShrink: 0,
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}>‹</button>
+
+      <div onClick={() => setLightbox(current[index].src)} style={{
+        flex: 1, aspectRatio: "1 / 1", borderRadius: 12, overflow: "hidden",
+        border: `1px solid ${accentColor}33`, cursor: "zoom-in", background: "#141414",
+      }}>
+        <img src={current[index].src} alt={current[index].label}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
       </div>
+
+      <button onClick={next} style={{
+        width: 36, height: 36, borderRadius: "50%", background: "#1a1a1a",
+        border: `1px solid ${accentColor}44`, color: accentColor,
+        fontSize: 16, cursor: "pointer", flexShrink: 0,
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}>›</button>
     </div>
   );
+};
 
   // ── MÉTRICAS: grade quadrada igual antes ──────────────────────────────────
   const MetricasGrid = () => (
