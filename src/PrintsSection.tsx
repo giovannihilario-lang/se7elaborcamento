@@ -2,24 +2,24 @@ import { useState, useRef } from "react";
 
 const prints = {
   feed: [
-    { src: "src/prints/reel-1.mov", label: "Reel" },
-    { src: "src/prints/reel-2.mov", label: "Reel" },
-    { src: "src/prints/reel-3.mov", label: "Reel" },
-    { src: "src/prints/reel-4.mov", label: "Reel" }
+    { src: "/prints/reel-1.mov", label: "Reel" },
+    { src: "/prints/reel-2.mov", label: "Reel" },
+    { src: "/prints/reel-3.mov", label: "Reel" },
+    { src: "/prints/reel-4.mov", label: "Reel" }
   ],
   metricas: [
-    { src: "src/prints/metric-1.png", label: "Alcance" },
-    { src: "src/prints/metric-2.png", label: "Seguidores" },
-    { src: "src/prints/metric-3.png", label: "Insights" },
-    { src: "src/prints/metric-4.png", label: "Insights" },
+    { src: "/prints/metric-1.png", label: "Alcance" },
+    { src: "/prints/metric-2.png", label: "Seguidores" },
+    { src: "/prints/metric-3.png", label: "Insights" },
+    { src: "/prints/metric-4.png", label: "Insights" },
   ],
   design: [
-    { src: "src/prints/post-1.png", label: "Post" },
-    { src: "src/prints/post-2.png", label: "Post" },
-    { src: "src/prints/post-3.png", label: "Post" },
-    { src: "src/prints/post-4.png", label: "Post" },
-    { src: "src/prints/post-5.png", label: "Post" },
-    { src: "src/prints/post-6.png", label: "Post" },
+    { src: "/prints/post-1.png", label: "Post" },
+    { src: "/prints/post-2.png", label: "Post" },
+    { src: "/prints/post-3.png", label: "Post" },
+    { src: "/prints/post-4.png", label: "Post" },
+    { src: "/prints/post-5.png", label: "Post" },
+    { src: "/prints/post-6.png", label: "Post" },
   ],
 };
 
