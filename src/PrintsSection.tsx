@@ -154,7 +154,7 @@ export const PrintsSection = () => {
             onClick={() => setLightbox(p.src)}
             style={{
               flexShrink: 0,
-              width: "calc(50% - 6px)",
+              width: "calc(33.33% - 8px)",
               aspectRatio: "5 / 4",
               borderRadius: 12,
               overflow: "hidden",
@@ -222,16 +222,6 @@ export const PrintsSection = () => {
             alt={p.label}
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
-          <div style={{
-            position: "absolute", bottom: 0, left: 0, right: 0,
-            padding: "16px 10px 8px",
-            background: "linear-gradient(transparent, #000000cc)",
-            fontFamily: "'Space Mono', monospace",
-            fontSize: 9, color: accentColor,
-            letterSpacing: 1.5, textTransform: "uppercase",
-          }}>
-            {p.label}
-          </div>
         </div>
       ))}
     </div>
