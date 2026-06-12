@@ -1,0 +1,19 @@
+[1mdiff --git a/src/PrintsSection.tsx b/src/PrintsSection.tsx[m
+[1mindex 0e60dc9..d8bb05c 100644[m
+[1m--- a/src/PrintsSection.tsx[m
+[1m+++ b/src/PrintsSection.tsx[m
+[36m@@ -2,10 +2,10 @@[m [mimport { useState, useRef } from "react";[m
+ [m
+ const prints = {[m
+   feed: [[m
+[31m-    { src: "/prints/reel-1.MP4", label: "Reel" },[m
+[31m-    { src: "/prints/reel-2.MP4", label: "Reel" },[m
+[31m-    { src: "/prints/reel-3.MP4", label: "Reel" },[m
+[31m-    { src: "/prints/reel-4.MP4", label: "Reel" },[m
+[32m+[m[32m    { src: "/prints/reel-1.mp4", label: "Reel" },[m
+[32m+[m[32m    { src: "/prints/reel-2.mp4", label: "Reel" },[m
+[32m+[m[32m    { src: "/prints/reel-3.mp4", label: "Reel" },[m
+[32m+[m[32m    { src: "/prints/reel-4.mp4", label: "Reel" },[m
+   ],[m
+   metricas: [[m
+     { src: "/prints/metric-1.png", label: "Alcance" },[m

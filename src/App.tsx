@@ -112,6 +112,8 @@ const CasesSection = () => (
         </div>
       </div>
 
+<PrintsSection />
+
       <div className="stat-grid">
         <div style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 8 }}>
           <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#39FF14" }} />
@@ -119,8 +121,6 @@ const CasesSection = () => (
             Gestão ativa de social media · 80% do conteúdo produzido por Giovanni Domingues Hilario
           </p>
         </div>
-
-        <PrintsSection />
 
         <div className="stat-item">
           <p style={{ fontSize: 9, color: "#555", fontFamily: "'Space Mono', monospace", letterSpacing: 1.5, marginBottom: 6 }}>VISUALIZAÇÕES · 30 DIAS</p>
