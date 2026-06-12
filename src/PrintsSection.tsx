@@ -122,7 +122,7 @@ export const PrintsSection = () => {
       }}>‹</button>
 
       <div onClick={() => setLightbox(current[index].src)} style={{
-        flex: 1, aspectRatio: "1 / 1", borderRadius: 12, overflow: "hidden",
+        flex: 1, aspectRatio: "4 / 5", borderRadius: 12, overflow: "hidden",
         border: `1px solid ${accentColor}33`, cursor: "zoom-in", background: "#141414",
       }}>
         <img src={current[index].src} alt={current[index].label}
